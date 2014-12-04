@@ -46,7 +46,7 @@ function kreirajEHRzaBolnika() {
 		            gender: spol,
 		            partyAdditionalInfo: [{key: "ehrId", value: ehrId}]
 		        };
-		        		            console.log(spol);
+		        //console.log(spol);
 		        $.ajax({
 		            url: baseUrl + "/demographics/party",
 		            type: 'POST',
