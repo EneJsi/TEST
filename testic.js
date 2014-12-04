@@ -23,7 +23,7 @@ function kreirajEHRzaBolnika() {
 	var priimek = $("#kreirajPriimek").val();
 	var spol = $("kreirajSpol").val();
 	
-	if (!ime || !priimek || !spol || ime.trim().length == 0 || priimek.trim().length == 0 ) {
+	if (!ime || !priimek || ime.trim().length == 0 || priimek.trim().length == 0 ) {
 		$("#kreirajSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevane podatke!</span>");
 	} else {
 		$.ajaxSetup({
