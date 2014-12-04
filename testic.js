@@ -34,6 +34,12 @@ function kreirajEHRzaBolnika() {
 		    type: 'POST',
 		    success: function (data) {
 		        var ehrId = data.ehrId;
+		        if(document.getElementById('MALE').checked) {
+						spol = 'MALE';
+				}
+				else{
+						spol = 'FEMALE';
+				}
 		        var partyData = {
 		            firstNames: ime,
 		            lastNames: priimek,
