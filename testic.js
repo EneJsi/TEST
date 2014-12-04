@@ -21,8 +21,9 @@ function kreirajEHRzaBolnika() {
 
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
-
-	if (!ime || !priimek || ime.trim().length == 0 || priimek.trim().length == 0) {
+	var spol = $("kreirajSpol").val();
+	
+	if (!ime || !priimek || !spol || ime.trim().length == 0 || priimek.trim().length == 0  || spol.trim().length == 0) {
 		$("#kreirajSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevane podatke!</span>");
 	} else {
 		$.ajaxSetup({
@@ -36,8 +37,10 @@ function kreirajEHRzaBolnika() {
 		        var partyData = {
 		            firstNames: ime,
 		            lastNames: priimek,
+		            gender: spol,
 		            partyAdditionalInfo: [{key: "ehrId", value: ehrId}]
 		        };
+		        		            console.log(spol);
 		        $.ajax({
 		            url: baseUrl + "/demographics/party",
 		            type: 'POST',
@@ -95,7 +98,6 @@ function dodajMeritveVitalnihZnakov() {
 	var telesnaVisina = $("#dodajVitalnoTelesnaVisina").val();
 	var telesnaTeza = $("#dodajVitalnoTelesnaTeza").val();
 
-	var merilec = $("#dodajVitalnoMerilec").val();
 
 	if (!ehrId || ehrId.trim().length == 0) {
 		$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevane podatke!</span>");
@@ -116,7 +118,6 @@ function dodajMeritveVitalnihZnakov() {
 		    "ehrId": ehrId,
 		    templateId: 'Vital Signs',
 		    format: 'FLAT',
-		    committer: merilec
 		};
 		$.ajax({
 		    url: baseUrl + "/composition?" + $.param(parametriZahteve),
