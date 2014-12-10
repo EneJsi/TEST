@@ -15,7 +15,7 @@ function getSessionId() {
     return response.responseJSON.sessionId;
 }
 
-var bmiFemale = 
+
 function BmiIzracun() {
 	var BmiFCsv = $.csv.toObjects("./BmiFemale.csv");
 	var BmiMCsv = $.csv.toObjects("./BmiMale.csv");
@@ -28,7 +28,7 @@ function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
 
 		console.log("./BmiMale.csv");
-
+	console.log('hello');
 	
 	var BmiFCsv = $.csv.toObjects("./BmiFemale.csv");
 	var BmiMCsv = $.csv.toObjects("./BmiMale.csv");
