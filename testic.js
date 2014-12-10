@@ -27,6 +27,9 @@ function BmiIzracun() {
 function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
 
+		console.log("./BmiMale.csv");
+
+	
 	var BmiFCsv = $.csv.toObjects("./BmiFemale.csv");
 	var BmiMCsv = $.csv.toObjects("./BmiMale.csv");
 	console.log(BmiFCsv);
