@@ -20,7 +20,7 @@ function getSessionId() {
 
 
 function BmiIzracun() {
-	var BmiFCsv = $.csv.toObjects("./BmiFemale.csv");
+	var BmiFCsv = $.csv.toObjects(BmiFemale.csv);
 	var BmiMCsv = $.csv.toObjects("./BmiMale.csv");
 	console.log(BmiFCsv);
 	
