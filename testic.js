@@ -255,7 +255,7 @@ function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
 
 
-	//console.log(maleJsonBMI);
+	console.log(maleJsonBMI);
 
 
 	var ime = $("#kreirajIme").val();
