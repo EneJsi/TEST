@@ -15,9 +15,23 @@ function getSessionId() {
     return response.responseJSON.sessionId;
 }
 
+var bmiFemale = 
+function BmiIzracun() {
+	var BmiFCsv = $.csv.toObjects('./BmiFemale.csv');
+	var BmiMCsv = $.csv.toObjects('./BmiMale.csv');
+	console.log(BmiFCsv);
+	
+	
+}
 
 function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
+
+		var BmiFCsv = $.csv.toObjects('./BmiFemale.csv');
+	var BmiMCsv = $.csv.toObjects('./BmiMale.csv');
+	console.log(BmiFCsv);
+
+
 
 	var ime = $("#kreirajIme").val();
 	var priimek = $("#kreirajPriimek").val();
