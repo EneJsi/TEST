@@ -23,8 +23,33 @@ function getSessionId() {
 
 function BmiIzracun() {
 
+var maleJsonBMI = (function () {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': urlMaleJson,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})(); 
 
-
+var femaleJsonBMI = (function () {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': urlFemaleJson,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})(); 
 
 	
 }
@@ -33,7 +58,19 @@ function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
 
 
-	console.log(urlMaleJson);
+	var maleJsonBMI = (function () {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': urlMaleJson,
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})(); console.log(maleJsonBMI);
 
 
 	var ime = $("#kreirajIme").val();
