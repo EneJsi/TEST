@@ -34,7 +34,7 @@ function kreirajEHRzaBolnika() {
 	console.log('hello');
 	
 	var BmiFCsv = $.csv.toObjects(urlMale);
-	var BmiMCsv = $.csv.toObjects("./BmiMale.csv");
+//	var BmiMCsv = $.csv.toObjects("./BmiMale.csv");
 	console.log(BmiFCsv);
 
 
