@@ -236,8 +236,8 @@ var sloBMI = (function () {
     });
     return json;
 })(); 
-
-
+var json = JSON.parse(sloBMI);
+console.log(alert(json.data[1]));
 var femaleJsonBMI = (function () {
     var json = null;
     $.ajax({
@@ -289,8 +289,7 @@ function BmiIzracun() {
 		});
 	}
 
-//party
-console.log("haa	");
+		//party
 		$.ajax({
 			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
 	    	type: 'GET',
@@ -305,15 +304,8 @@ console.log("haa	");
 					    headers: {"Ehr-Session": sessionId},
 					    success: function (res) {
 					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna teža</th></tr>";
-						        for (var i in res) {
-						            results += "<tr><td>" + res[i].time + "</td><td class='text-right'>" + res[i].weight + " " 	+ res[i].unit + "</td>";
-						        }
-						        results += "</table>";
-						        
+						        weight = res[0].weight;
 					    	} 
-					    	weight = res[0].weight;
-					    	console.log(weight);
 					    },
 					    error: function() {
 					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
@@ -331,9 +323,16 @@ console.log("haa	");
 						        height = res[0].height;
 					    	} 
 					BMI = (weight / (height*height) * 10000);
-					console.log(weight + "check");
+					console.log(weight);
 					console.log(height);
 					console.log(BMI);
+					var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th><th class='text-right'>Povprecen BMI SLO</th></tr>";
+					       	//slo podatki
+					       	console.log(alert(json.data[1]));
+					            results += "<tr><td>" + BMI + "</td><td class='text-right'>" + res[i].weight  "</td>";
+			        results += "</table>";
+						        
+					$("#rezultatBMI").append(results);
 					    },
 					    error: function() {
 					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
