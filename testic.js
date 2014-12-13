@@ -333,7 +333,7 @@ function BmiIzracun() {
 					
 					
 					
-						    	var results = "<h1>Vas BMI:" + BMI + "Povprecen Slo BMI: " + sloBMI.data[0][1] +"</h1>";
+						    	var results = "<h1>Vas BMI: </h1>" + BMI + "<h1>Povprecen Slo BMI: </h1><h1>" + sloBMI.data[0][1] +"</h1>";
 						        
 					$("#rezultatBMI").append(results);
 					    },
