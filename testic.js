@@ -206,7 +206,9 @@ while(drzave[i] != '-5'){
 }
 console.log("Napisal si" + i + "drzav.");*/
 
-
+var BMI;
+var height;
+var weight;
 var maleJsonBMI = (function () {
     var json = null;
     $.ajax({
@@ -288,45 +290,60 @@ function BmiIzracun() {
 		});
 	}
 
-	if (!ehrId || ehrId.trim().length == 0) {
-		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
-	} else {
+//party
 		$.ajax({
 			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
 	    	type: 'GET',
 	    	headers: {"Ehr-Session": sessionId},
 	    	success: function (data) {
 				var party = data.party;
+					//teza
+					
 					$.ajax({
 					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
 					    type: 'GET',
 					    headers: {"Ehr-Session": sessionId},
 					    success: function (res) {
 					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th></tr>";
-						       
-						            results += "<tr><td>" + res[0].height + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
-						        
-						        results += "</table>";
-						        $("#rezultatMeritveVitalnihZnakov").append(results);
-					    	} else {
-					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
+						        weight = res[0].weight;
 					    	}
 					    },
 					    error: function() {
-					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
 							console.log(JSON.parse(err.responseText).userMessage);
 					    }
-					});					
+					});		
+					//visina
+					
+					$.ajax({
+						url: baseUrl + "/view/" + ehrId + "/" + "height",
+					    type: 'GET',
+					    headers: {"Ehr-Session": sessionId},
+					    success: function (res) {
+					    	if (res.length > 0) {
+						        height = res[0].height;
+					    	} 
+					    },
+					    error: function() {
+					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+							console.log(JSON.parse(err.responseText).userMessage);
+					    }
+					});	
+					
+					BMI = (weight / (height*height) * 10000);
+					console.log(BMI);
+					
 	    	},
 	    	error: function(err) {
-	    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+	    		$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
 				console.log(JSON.parse(err.responseText).userMessage);
 	    	}
 		});
-	}
+	
 	
 }
+
+
 
 function kreirajEHRzaBolnika() {
 	sessionId = getSessionId();
@@ -381,31 +398,6 @@ function kreirajEHRzaBolnika() {
 }
 
 
-function preberiEHRodBolnika() {
-	sessionId = getSessionId();
-
-	var ehrId = $("#preberiEHRid").val();
-
-	if (!ehrId || ehrId.trim().length == 0) {
-		$("#preberiSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
-	} else {
-		$.ajax({
-			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
-			type: 'GET',
-			headers: {"Ehr-Session": sessionId},
-	    	success: function (data) {
-				var party = data.party;
-				$("#preberiSporocilo").html("<span class='obvestilo label label-success fade-in'>Bolnik '" + party.firstNames + " " + party.lastNames + "'.</span>");
-				console.log("Bolnik '" + party.firstNames + " " + party.lastNames +".");
-			},
-			error: function(err) {
-				$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-				console.log(JSON.parse(err.responseText).userMessage);
-			}
-		});
-	}	
-}
-
 
 function dodajMeritveVitalnihZnakov() {
 	sessionId = getSessionId();
@@ -454,51 +446,7 @@ function dodajMeritveVitalnihZnakov() {
 }
 
 
-function preberiMeritveVitalnihZnakov() {
-	sessionId = getSessionId();	
 
-	var ehrId = $("#meritveVitalnihZnakovEHRid").val();
-	var tip = $("#preberiTipZaVitalneZnake").val();
-
-	if (!ehrId || ehrId.trim().length == 0 || !tip || tip.trim().length == 0) {
-		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
-	} else {
-		$.ajax({
-			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
-	    	type: 'GET',
-	    	headers: {"Ehr-Session": sessionId},
-	    	success: function (data) {
-				var party = data.party;
-				$("#rezultatMeritveVitalnihZnakov").html("<br/><span>Pridobivanje podatkov za <b>'" + tip + "'</b> bolnika <b>'" + party.firstNames + " " + party.lastNames + "'</b>.</span><br/><br/>");
-					$.ajax({
-					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
-					    type: 'GET',
-					    headers: {"Ehr-Session": sessionId},
-					    success: function (res) {
-					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna temperatura</th></tr>";
-						       
-						            results += "<tr><td>" + res[0].height_length + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
-						        
-						        results += "</table>";
-						        $("#rezultatMeritveVitalnihZnakov").append(results);
-					    	} else {
-					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
-					    	}
-					    },
-					    error: function() {
-					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-							console.log(JSON.parse(err.responseText).userMessage);
-					    }
-					});					
-	    	},
-	    	error: function(err) {
-	    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-				console.log(JSON.parse(err.responseText).userMessage);
-	    	}
-		});
-	}
-}
 
 
 $(document).ready(function() {
@@ -513,11 +461,6 @@ $(document).ready(function() {
 		$("#dodajVitalnoDatumInUra").val(podatki[1]);
 		$("#dodajVitalnoTelesnaVisina").val(podatki[2]);
 		$("#dodajVitalnoTelesnaTeza").val(podatki[3]);
-		$("#dodajVitalnoTelesnaTemperatura").val(podatki[4]);
-		$("#dodajVitalnoKrvniTlakSistolicni").val(podatki[5]);
-		$("#dodajVitalnoKrvniTlakDiastolicni").val(podatki[6]);
-		$("#dodajVitalnoNasicenostKrviSKisikom").val(podatki[7]);
-		$("#dodajVitalnoMerilec").val(podatki[8]);
 	});
 	$('#preberiEhrIdZaVitalneZnake').change(function() {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("");
