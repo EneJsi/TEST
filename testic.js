@@ -312,7 +312,7 @@ function BmiIzracun() {
 					    	} 
 					    },
 					    error: function() {
-					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
 							console.log(JSON.parse(err.responseText).userMessage);
 					    }
 					});		
@@ -333,7 +333,7 @@ function BmiIzracun() {
 					
 					console.log(alert(sloBMI.data[1]));
 					
-						    	var results = "Vas BMI:" + BMI + "Povprecen Slo BMI: ";
+						    	var results = "Vas BMI:" + BMI + "Povprecen Slo BMI: " + sloBMI.data[0][1];
 						        
 					$("#rezultatBMI").append(results);
 					    },
