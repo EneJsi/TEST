@@ -286,14 +286,16 @@ function BmiIzracun() {
 	    	success: function (data) {
 				var party = data.party;
 					//teza
-					$("#rezultatBMI").html("<br/><span>Oseba <b>'" + party.firstNames + " " + party.lastNames +","+ "'</b>.</span><br/><br/>");
+					$("#rezultatBMI").html("<br/><span>Oseba <b>" + party.firstNames + " " + party.lastNames +","+ "</b></span><br/><br/>");
 					$.ajax({
 					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
 					    type: 'GET',
 					    headers: {"Ehr-Session": sessionId},
 					    success: function (res) {
-					    	if (res.length > 0) {
-						        weight = res[0].weight;
+					    	if(res.length > 0) {
+					    		for(var i in res){
+						        weight = res[i].weight;
+					    		}
 						        console.log(weight + "To je teza nazadnje dodanega")
 					    	} 
 					    },
@@ -325,7 +327,7 @@ function BmiIzracun() {
 								
 					       		results += 	"<span class=" + "label label-danger"+ ">" +"Imate prenizko telesno težo!" + "</span></h3>";
 							}else if(BMI < 25){
-				       			results += 	"<span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
+				       			results += 	"<span class=" + "label label-success"+ ">" +"Čestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
 							}else{
 				       			results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
 				    }
