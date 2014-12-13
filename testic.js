@@ -440,10 +440,10 @@ function preberiMeritveVitalnihZnakov() {
 					    headers: {"Ehr-Session": sessionId},
 					    success: function (res) {
 					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna teža</th></tr>";
+						    	var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th><th class='text-right'>Telesna teža</th></tr>";
 						       
 						        for (var i in res) {
-						            results += "<tr><td>" + res[i].time + "</td><td class='text-right'>" + res[i].weight + " " 	+ res[i].unit + "</td>";
+						            results += "<tr><td>" + res[0].time + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
 						        }
 						        
 						        results += "</table>";
