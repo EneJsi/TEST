@@ -301,7 +301,7 @@ function BmiIzracun() {
 	    	success: function (data) {
 				var party = data.party;
 					//teza
-					
+					$("#rezultatBMI").html("<br/><span>Pridobivanje podatkov za <b>'" + party.firstNames + " " + party.lastNames + "'</b>.</span><br/><br/>");
 					$.ajax({
 					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
 					    type: 'GET',
