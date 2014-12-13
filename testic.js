@@ -314,6 +314,7 @@ console.log("haa	");
 						        
 					    	} 
 					    	weight = res[0].weight;
+					    	console.log(weight);
 					    },
 					    error: function() {
 					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
