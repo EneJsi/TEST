@@ -291,6 +291,7 @@ function BmiIzracun() {
 	}
 
 //party
+console.log("haa	");
 		$.ajax({
 			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
 	    	type: 'GET',
