@@ -294,6 +294,7 @@ function BmiIzracun() {
 					    success: function (res) {
 					    	if (res.length > 0) {
 						        weight = res[0].weight;
+						        console.log(weight + "To je teza nazadnje dodanega")
 					    	} 
 					    },
 					    error: function() {
