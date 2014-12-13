@@ -322,9 +322,9 @@ function BmiIzracun() {
 					if(isNaN(BMI)){
 							$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Vnesite meritve telesne teže ter višine.");
 					}else{
-					    var results = "<h4>Vas BMI: </h4><h4>" + BMI + "</h4><h4>" + "Povprečen slovenski BMI: </h4><h4>" + "sloBMI.data[0][1]";
+					    var results = "Vas BMI: " + BMI  + "Povprečen slovenski BMI: " + sloBMI.data[0][1];
 							if(BMI < 18.5){
-					       		results += "<span class='label label-success'>Success</span>";
+					       		results += "<br><span class='label label-success'>Success</span>";
 							}else if(BMI < 25){
 				       			results += 	"<span class='label label-success'>Čestitam. Lepo skrbite za svojo težo.!</span></h4>";
 							}else{
