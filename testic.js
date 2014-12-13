@@ -328,7 +328,7 @@ function BmiIzracun() {
 					console.log(height);
 					console.log(BMI);
 					
-					console.log(alert(sloBMI.object.data[1]));
+					console.log(alert(sloBMI.data[1]));
 					
 						    	var results = "Vas BMI:" + BMI + "Povprecen Slo BMI: ";
 						        
