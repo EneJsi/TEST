@@ -234,6 +234,7 @@ var sloBMI = (function () {
             json = data;
         }
     });
+        console.log(alert(sloBMI.data[1]));
     return json;
 })(); 
 
@@ -262,7 +263,7 @@ function getSessionId() {
                 "&password=" + encodeURIComponent(password),
         async: false
     });
-    console.log(alert(sloBMI.data[1]));
+
     return response.responseJSON.sessionId;
 }
 
