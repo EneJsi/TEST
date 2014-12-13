@@ -331,6 +331,8 @@ function BmiIzracun() {
 					});	
 					
 					BMI = (weight / (height*height) * 10000);
+					console.log(weight);
+					console.log(height);
 					console.log(BMI);
 					
 	    	},
