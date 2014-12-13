@@ -234,10 +234,10 @@ var sloBMI = (function () {
             json = data;
         }
     });
-        console.log(alert(sloBMI.data[1]));
+       
     return json;
 })(); 
-
+ console.log(alert(sloBMI.data[1]));
 
 
 var femaleJsonBMI = (function () {
