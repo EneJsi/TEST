@@ -476,9 +476,9 @@ function preberiMeritveVitalnihZnakov() {
 					    headers: {"Ehr-Session": sessionId},
 					    success: function (res) {
 					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th></tr>";
+						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna temperatura</th></tr>";
 						       
-						            results += "<tr><td>" + res[0].height + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
+						            results += "<tr><td>" + res[0].height_length + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
 						        
 						        results += "</table>";
 						        $("#rezultatMeritveVitalnihZnakov").append(results);
