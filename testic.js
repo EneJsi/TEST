@@ -326,9 +326,9 @@ function BmiIzracun() {
 							if(BMI < 18.5){
 					       		results += "<br><span class='label label-success'>Success</span>";
 							}else if(BMI < 25){
-				       			results += 	"<span class='label label-success'>Čestitam. Lepo skrbite za svojo težo.!</span></h4>";
+				       			results += 	"<br><span class='label label-success'>Čestitam. Lepo skrbite za svojo težo.!</span></h4>";
 							}else{
-				       			results += 	"<span class='label label-danger'>Imate prekomerno telesno težo. Skrbite zase!</span></h4>";
+				       			results += 	"<br><span class='label label-danger'>Imate prekomerno telesno težo. Skrbite zase!</span></h4>";
 				    }
 				    console.log(results);
 					$("#rezultatBMI").append(results);
