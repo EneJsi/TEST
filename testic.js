@@ -340,8 +340,8 @@ function BmiIzracun() {
 							}else if(BMI < 25){
 				       			results += 	"<span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
 							}else{
-				       	results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
-				       }
+				       			results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
+				    }
 					$("#rezultatBMI").append(results);
 					}
 					    },
@@ -487,6 +487,7 @@ $(document).ready(function() {
 	$('#preberiEhrIdZaVitalneZnake').change(function() {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("");
 		$("#rezultatMeritveVitalnihZnakov").html("");
+		$("#rezultatBMI").html("");
 		$("#meritveVitalnihZnakovEHRid").val($(this).val());
 	});
 });
