@@ -287,8 +287,44 @@ function BmiIzracun() {
 			}
 		});
 	}
-	
 
+	if (!ehrId || ehrId.trim().length == 0) {
+		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
+	} else {
+		$.ajax({
+			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
+	    	type: 'GET',
+	    	headers: {"Ehr-Session": sessionId},
+	    	success: function (data) {
+				var party = data.party;
+					$.ajax({
+					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
+					    type: 'GET',
+					    headers: {"Ehr-Session": sessionId},
+					    success: function (res) {
+					    	if (res.length > 0) {
+						    	var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th></tr>";
+						       
+						            results += "<tr><td>" + res[0].height + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
+						        
+						        results += "</table>";
+						        $("#rezultatMeritveVitalnihZnakov").append(results);
+					    	} else {
+					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
+					    	}
+					    },
+					    error: function() {
+					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+							console.log(JSON.parse(err.responseText).userMessage);
+					    }
+					});					
+	    	},
+	    	error: function(err) {
+	    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+				console.log(JSON.parse(err.responseText).userMessage);
+	    	}
+		});
+	}
 	
 }
 
@@ -440,11 +476,9 @@ function preberiMeritveVitalnihZnakov() {
 					    headers: {"Ehr-Session": sessionId},
 					    success: function (res) {
 					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th><th class='text-right'>Telesna teža</th></tr>";
+						    	var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th></tr>";
 						       
-						        for (var i in res) {
-						            results += "<tr><td>" + res[0].time + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
-						        }
+						            results += "<tr><td>" + res[0].height + "</td><td class='text-right'>" + res[0].weight + " " 	+ res[0].unit + "</td>";
 						        
 						        results += "</table>";
 						        $("#rezultatMeritveVitalnihZnakov").append(results);
