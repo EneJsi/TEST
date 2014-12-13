@@ -330,18 +330,20 @@ function BmiIzracun() {
 					console.log(weight);
 					console.log(height);
 					console.log(BMI);
-					
-					
-								var results2;
-						    	var results = "<h3>Vas BMI: </h3><h3>" + BMI + "</h3><h3>Povprečen slovenski BMI: </h3><h3>" + sloBMI.data[0][1];
-						        if(BMI < 18.5){
-						        	results += 	"<span class=" + "label label-danger"+ ">" +"Imate prenizko telesno težo!" + "</span></h3>";
-						        }else if(BMI < 25){
-						        	results += 	"<span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
-						        }else{
-						        	results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
-						        }
+					if(isNaN(BMI)){
+							$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Vnesite meritve telesne teže ter višine.");
+					}else{
+						var results = "";
+					    results = "<h3>Vas BMI: </h3><h3>" + BMI + "</h3><h3>Povprečen slovenski BMI: </h3><h3>" + sloBMI.data[0][1];
+							if(BMI < 18.5){
+					       		results += 	"<span class=" + "label label-danger"+ ">" +"Imate prenizko telesno težo!" + "</span></h3>";
+							}else if(BMI < 25){
+				       			results += 	"<span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
+							}else{
+				       	results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
+				       }
 					$("#rezultatBMI").append(results);
+					}
 					    },
 					    error: function() {
 					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
