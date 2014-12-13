@@ -237,7 +237,7 @@ var sloBMI = (function () {
        
     return json;
 })(); 
- console.log(alert(sloBMI.data[1]));
+
 
 
 var femaleJsonBMI = (function () {
@@ -254,7 +254,7 @@ var femaleJsonBMI = (function () {
     return json;
 })(); 
 
-
+console.log(alert(sloBMI.data[1]));
 console.log(sloBMI);
 function getSessionId() {
     var response = $.ajax({
