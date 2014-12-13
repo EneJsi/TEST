@@ -330,11 +330,7 @@ function BmiIzracun() {
 					var json = JSON.parse(sloBMI);
 					console.log(alert(json.data[1]));
 					
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna teža</th></tr>";
-						        
-						            results += "<tr><td>" + BMI + "</td><td class='text-right'>" + '25' + "</td>";
-						        
-						        results += "</table>";
+						    	var results = "Vas BMI:" + BMI + "Povprecen Slo BMI: ";
 						        
 					$("#rezultatBMI").append(results);
 					    },
