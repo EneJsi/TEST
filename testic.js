@@ -333,16 +333,15 @@ function BmiIzracun() {
 					
 					
 								var results2;
-						    	var results = "<h3>Vas BMI: </h3><h3>" + BMI + "</h3><h3>Povprečen slovenski BMI: </h3><h3>" + sloBMI.data[0][1] +"</h3>";
+						    	var results = "<h3>Vas BMI: </h3><h3>" + BMI + "</h3><h3>Povprečen slovenski BMI: </h3><h3>" + sloBMI.data[0][1];
 						        if(BMI < 18.5){
-						        	results2 = 	"<h3> <span class=" + "label label-danger"+ ">" +"Imate prenizko telesno težo!" + "</span></h3>";
+						        	results += 	"<span class=" + "label label-danger"+ ">" +"Imate prenizko telesno težo!" + "</span></h3>";
 						        }else if(BMI < 25){
-						        	results2 = 	"<h3> <span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
+						        	results += 	"<span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
 						        }else{
-						        	results2 = 	"<h3> <span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
+						        	results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
 						        }
 					$("#rezultatBMI").append(results);
-					$("#labelica").append(results2);
 					    },
 					    error: function() {
 					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
