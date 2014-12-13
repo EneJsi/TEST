@@ -237,6 +237,9 @@ var sloBMI = (function () {
     return json;
 })(); 
 
+	var json = JSON.parse(sloBMI);
+	console.log(alert(json.data[1]));
+
 var femaleJsonBMI = (function () {
     var json = null;
     $.ajax({
@@ -330,8 +333,7 @@ function BmiIzracun() {
 					
 					var results = "<table class='table table-striped table-hover'><tr><th>Vas BMI</th><th class='text-right'>Povprecen BMI SLO</th></tr>";
 					       	//slo podatki
-					       	console.log(alert(json.data[1]));
-					            results += "<tr><td>" + BMI + "</td><td class='text-right'>" + res[i].weight  "</td>";
+					            results += "<tr><td>" + BMI + "</td><td class='text-right'>" + "25" +"</td>";
 			        results += "</table>";
 						        
 					$("#rezultatBMI").append(results);
@@ -362,8 +364,7 @@ function kreirajEHRzaBolnika() {
 	var priimek = $("#kreirajPriimek").val();
 	var spol = $("kreirajSpol").val();
 	
-	var json = JSON.parse(sloBMI);
-	console.log(alert(json.data[1]));
+
 	
 	if (!ime || !priimek || ime.trim().length == 0 || priimek.trim().length == 0 ) {
 		$("#kreirajSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevane podatke!</span>");
