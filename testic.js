@@ -330,6 +330,10 @@ console.log("haa	");
 					    	if (res.length > 0) {
 						        height = res[0].height;
 					    	} 
+					BMI = (weight / (height*height) * 10000);
+					console.log(weight + "check");
+					console.log(height);
+					console.log(BMI);
 					    },
 					    error: function() {
 					    	$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
@@ -337,10 +341,7 @@ console.log("haa	");
 					    }
 					});	
 					
-					BMI = (weight / (height*height) * 10000);
-					console.log(weight + "check");
-					console.log(height);
-					console.log(BMI);
+
 					
 	    	},
 	    	error: function(err) {
@@ -349,7 +350,7 @@ console.log("haa	");
 	    	}
 		});
 	
-	
+					
 }
 
 
