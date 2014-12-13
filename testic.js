@@ -237,8 +237,7 @@ var sloBMI = (function () {
     return json;
 })(); 
 
-	var json = JSON.parse(sloBMI);
-	console.log(alert(json.data[1]));
+
 
 var femaleJsonBMI = (function () {
     var json = null;
