@@ -327,8 +327,8 @@ function BmiIzracun() {
 					console.log(weight);
 					console.log(height);
 					console.log(BMI);
-					var json = JSON.parse(sloBMI);
-					console.log(alert(json.data[1]));
+					
+					console.log(alert(sloBMI.object.data[1]));
 					
 						    	var results = "Vas BMI:" + BMI + "Povprecen Slo BMI: ";
 						        
