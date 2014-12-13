@@ -276,22 +276,7 @@ function BmiIzracun() {
 
 	if (!ehrId || ehrId.trim().length == 0) {
 		$("#preberiSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
-	} else {
-		$.ajax({
-			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
-			type: 'GET',
-			headers: {"Ehr-Session": sessionId},
-	    	success: function (data) {
-				var party = data.party;
-				$("#preberiSporocilo").html("<span class='obvestilo label label-success fade-in'>Bolnik '" + party.firstNames + " " + party.lastNames + "'.</span>");
-				console.log("Bolnik '" + party.firstNames + " " + party.lastNames +".");
-			},
-			error: function(err) {
-				$("#preberiSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-				console.log(JSON.parse(err.responseText).userMessage);
-			}
-		});
-	}
+	} 
 
 		//party
 		$.ajax({
@@ -301,7 +286,7 @@ function BmiIzracun() {
 	    	success: function (data) {
 				var party = data.party;
 					//teza
-					$("#rezultatBMI").html("<br/><br/>");
+					$("#rezultatBMI").html("<br/><span>Oseba <b>'" + party.firstNames + " " + party.lastNames +","+ "'</b>.</span><br/><br/>");
 					$.ajax({
 					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
 					    type: 'GET',
@@ -336,12 +321,14 @@ function BmiIzracun() {
 						var results = "";
 					    results = "<h3>Vas BMI: </h3><h3>" + BMI + "</h3><h3>Povprečen slovenski BMI: </h3><h3>" + sloBMI.data[0][1];
 							if(BMI < 18.5){
+								
 					       		results += 	"<span class=" + "label label-danger"+ ">" +"Imate prenizko telesno težo!" + "</span></h3>";
 							}else if(BMI < 25){
 				       			results += 	"<span class=" + "label label-success"+ ">" +"Cestitam. Zdi se, da lepo skrbite za svojo telesno težo." + "</span></h3>";
 							}else{
 				       			results += 	"<span class=" + "label label-danger"+ ">" +"Morda imate kakšen kilogramček preveč. Skrbite zase!" + "</span></h3>";
 				    }
+				    console.log(results);
 					$("#rezultatBMI").append(results);
 					}
 					    },
