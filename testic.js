@@ -256,7 +256,7 @@ var femaleJsonBMI = (function () {
 
 
 console.log(sloBMI);
-console.log(alert(sloBMI.object.data[1]));
+console.log(sloBMI.data[0]);
 function getSessionId() {
     var response = $.ajax({
         type: "POST",
