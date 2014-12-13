@@ -252,8 +252,7 @@ var femaleJsonBMI = (function () {
     return json;
 })(); 
 
-console.log(maleJsonBMI);
-console.log(femaleJsonBMI);
+
 console.log(sloBMI);
 function getSessionId() {
     var response = $.ajax({
@@ -339,7 +338,7 @@ console.log("haa	");
 					});	
 					
 					BMI = (weight / (height*height) * 10000);
-					console.log(weight);
+					console.log(weight + "check");
 					console.log(height);
 					console.log(BMI);
 					
